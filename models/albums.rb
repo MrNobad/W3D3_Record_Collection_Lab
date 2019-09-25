@@ -5,10 +5,10 @@ require_relative('artist')
 class Albums
 
   def initialize( options )
-      @id = options["id"].to_i if options["id"]
-      @title = options["title"]
-      @genre = options["genre"]
-      @artist_id = options["artist_id"].to_i
+    @id = options["id"].to_i if options["id"]
+    @title = options["title"]
+    @genre = options["genre"]
+    @artist_id = options["artist_id"].to_i
 
   end
 
@@ -19,4 +19,9 @@ class Albums
     @id = result[0]["id"].to_i
   end
 
-end
+  def self.all()
+    sql = "SELECT * FROM albums"
+    SqlRunner.run(sql)
+  end
+
+  end
