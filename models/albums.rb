@@ -19,6 +19,13 @@ class Albums
     @id = result[0]["id"].to_i
   end
 
+  def artists()
+    sql = "SELECT * FROM artists WHERE id = $1"
+    values = [@artist_id]
+    results = SqlRunner.run(sql, values)
+    return Albums.new(results[0])
+  end
+
   def self.all()
     sql = "SELECT * FROM albums"
     SqlRunner.run(sql)
